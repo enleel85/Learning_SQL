@@ -1,0 +1,16 @@
+CREATE OR REPLACE VIEW v_user_login AS
+    SELECT 
+        user_login.id AS user_login_id,
+        user_login.user_id,
+        user.name AS user_name,
+        user_login.ip_address AS ip_address_integer,
+        INET_NTOA(user_login.ip_address) AS ip_address,  /* shown in standard notation xxx.xxx.xxx.xxx */ 
+        user_login.login_dt
+    
+    FROM user_login
+
+    INNER JOIN user on 1=1
+        AND user_login.user_id=user.id
+
+    WHERE 1=1
+        AND user_login.deleted_flag=0
