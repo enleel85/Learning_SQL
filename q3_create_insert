@@ -68,7 +68,7 @@ INNER JOIN sample_staff.department ON 1=1
 
 WHERE 1=1
 	AND invoice.deleted_flag=0
-	AND invoice.employee_id=10100 /* test filter on employee */
+	AND invoice.employee_id=10013 /* test filter on employee */
 
 LIMIT 10 /* limit filter */;
 
