@@ -55,21 +55,16 @@ FROM sample_staff.invoice
 INNER JOIN sample_staff.department_employee_rel ON 1=1
 	AND department_employee_rel.deleted_flag=0
 	AND invoice.employee_id=department_employee_rel.employee_id
-	
-
-	AND department_employee_rel.from_date<=invoice.invoiced_date /* Include the date of move*/
-	AND IFNULL(department_employee_rel.to_date,Date(Now())+1)>invoice.invoiced_date 
-    
-		
+	AND department_employee_rel.from_date<invoice.invoiced_date /* Include the date of move*/
+	AND IFNULL(department_employee_rel.to_date,Date(Now())+1)>=invoice.invoiced_date 
 
 INNER JOIN sample_staff.department ON 1=1
 	AND department.deleted_flag=0
 	AND department.id=department_employee_rel.department_id
 	
-
 WHERE 1=1
 	AND invoice.deleted_flag=0
-	AND invoice.employee_id=10013 /* test filter on employee */
+	AND invoice.id=1519 /* test filter on employee */
 
 LIMIT 10 /* limit filter */;
 
