@@ -55,11 +55,9 @@ FROM sample_staff.invoice
 INNER JOIN sample_staff.department_employee_rel ON 1=1
 	AND department_employee_rel.deleted_flag=0
 	AND invoice.employee_id=department_employee_rel.employee_id
-	AND department_employee_rel.from_date<=invoice.invoiced_date /* Include the date of move*/
-	AND (
-    	department_employee_rel.to_date>invoice.invoiced_date 
-    	OR department_employee_rel.to_date IS NULL
-		)
+	
+	AND invoice.invoiced_date BETWEEN department_employee_rel.from_date
+    	AND IFNULL(department_employee_rel.to_date,Date(Now()))
 
 INNER JOIN sample_staff.department ON 1=1
 	AND department.deleted_flag=0
