@@ -27,9 +27,9 @@ INSERT INTO sample_staff.invoice_partitioned
   `paid_flag`,
   `insert_dt`,
   `insert_user_id`,
-  `insert_process_code`L,
-  `update_dt` timestampP,
-  `update_user_id` int(11),
+  `insert_process_code`,
+  `update_dt`,
+  `update_user_id`,
   `update_process_code`,
   `deleted_flag`
 	)
