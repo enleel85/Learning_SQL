@@ -1,0 +1,7 @@
+INSERT INTO salary (`employee_id`,`from_date`,`to_date`,`insert_dt`,`insert_process_code`)
+    VALUES
+    (499998,'1993-12-27','1994-12-27',NOW(),'merge-insert')
+     ON DUPLICATE KEY UPDATE
+     salary.salary_amount=salary.salary_amount*10,
+     update_process_code='merge-update';
+     
